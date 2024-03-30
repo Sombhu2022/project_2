@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.active{
+    color: green;
+    border-bottom: 2px solid green;
+}
