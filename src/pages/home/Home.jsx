@@ -7,6 +7,7 @@ function Home() {
     <>
     <div>Home</div>
     <h1>hellow</h1>
+    <b>krittik</b>
     
     
     </>
