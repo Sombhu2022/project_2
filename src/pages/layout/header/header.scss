@@ -1,0 +1,19 @@
+.link{
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    // color: black;
+    margin: 0 10px;
+}
+.navbar-container {
+    background-color: aqua;
+    >p{
+         color: red;
+         b{
+            color: blue;
+            &:hover{
+                color: white;
+            }
+         }
+    }
+}
