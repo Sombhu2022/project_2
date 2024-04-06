@@ -26,6 +26,7 @@ function Home() {
 };
   return (
     <>
+
    
   <div className='slider'>
 
@@ -73,6 +74,7 @@ function Home() {
      
     </Slider>
 </div>
+
     </>
   )
 }
