@@ -30,7 +30,7 @@ function Home() {
    
   <div className='slider'>
 
-   <Carousel infiniteLoop autoPlay showArrows={false} showThumbs={false} showStatus={false} interval={2500}>
+   <Carousel infiniteLoop autoPlay axis='vertical' verticalSwipe="natural" showArrows={false} showThumbs={false} showStatus={false} interval={2500}>
     <div>
       
       <img src={img1} alt="" />
@@ -80,3 +80,4 @@ function Home() {
 }
 
 export default Home
+
