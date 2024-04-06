@@ -9,6 +9,7 @@ h1{
 }
 .slider{
     margin: 10px;
+    height: 50vh;
 }
 .slider .carousel-root .carousel .control-dots  {
     /* color: red; */
