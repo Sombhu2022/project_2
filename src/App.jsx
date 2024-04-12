@@ -11,16 +11,19 @@ import Layout from "./pages/layout/Layout";
 import './app.css'
 import Register from "./pages/user/register/Register";
 import Login from "./pages/user/login/Login";
-import Product from "./pages/product/Product";
+
+import ShopPage from "./pages/shop/ShopPage";
+
 const App = () => {
   return (
     <Router>
+
       <Routes>
 
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/product" element={<Product />} />
+          <Route path="/product" element={<ShopPage />} />
         </Route>
 
         <Route path="*" element={<Error />} />
@@ -29,6 +32,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 		
       </Routes>
+      
     </Router>
   );
 };
