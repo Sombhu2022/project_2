@@ -1,0 +1,33 @@
+.search_container{
+    >.form{
+        
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        >input , >select{
+            padding: 10px 15px;
+            border: solid 2px var(--black);
+            margin: 20px 0;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+        .search{
+            width: 400px;
+        }
+        >button{
+             padding: 7px 12px;
+             border-radius:10px;
+             background: var(--green);
+             outline: none;
+             border: none;
+             color: var(--white);
+            >svg{
+                height: 25px;
+                width: 25px;
+            }
+        }
+
+    }
+}

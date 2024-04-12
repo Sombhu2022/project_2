@@ -3,3 +3,9 @@
     height: 100vh;
     padding: 10px;
 }
+:root{
+    --red:rgb(244, 50, 11);
+    --black:black;
+    --green:#0FA958;
+    --white:whitesmoke;
+}
