@@ -2,7 +2,7 @@ import { Link, NavLink} from 'react-router-dom'
 
 import { AiFillHome } from "react-icons/ai";
 
-import './header.scss'
+import './navbar.scss'
 const Navbar = () => {
   return (
     <header className='navbar-container'>
@@ -17,6 +17,7 @@ const Navbar = () => {
         <Link to={"/login"}>
            <button >Login</button>
         </Link>
+        
         </nav>
        
     </header>

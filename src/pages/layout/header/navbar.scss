@@ -5,8 +5,14 @@
     // color: black;
     margin: 0 10px;
 }
+
+.active{
+    color: green;
+    border-bottom: 2px solid green;
+}
+
 .navbar-container {
-    background-color: aqua;
+    background-color: beige;
     >p{
          color: red;
          b{

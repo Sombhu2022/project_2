@@ -1,5 +1,5 @@
 import React from 'react'
-import './home.css'
+import './home.scss'
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -12,22 +12,22 @@ import "slick-carousel/slick/slick-theme.css";
 
 import img1 from './images/img1.png'
 
+
 import { data } from './data';
 import { Link } from 'react-router-dom';
 
 function Home() {
   var settings = {
-  dots: true,
+  dots: false,
   infinite: true,
   arrows:true,
   speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 1
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  variableWidth:"100%"
 };
   return (
-    <>
-
-   
+    <> 
   <div className='slider'>
 
    <Carousel infiniteLoop autoPlay axis='vertical' verticalSwipe="natural" showArrows={false} showThumbs={false} showStatus={false} interval={2500}>
@@ -52,16 +52,22 @@ function Home() {
     </div>
 
 
-<div className='shop-conainer'>
+<div className='shop_conainer'>
 
-    <Slider {...settings}>
+    <Slider {...settings}  >
      {
-       data.map((ele , index )=>{
+       data?.map((ele , index )=>{
         return(
           <div className='shop' key={index}>
-           <p>{ele.shop_name}</p>
+            <div className='img_container'>
+               <img  src={img1}/>
+            </div>
+            <div className='shop_info'>
+
+           <h2>{ele.shop_name}</h2>
            <p>{ele.location}</p>
            <p>{ele.rating}</p>
+            </div>
 
            <Link>
            <button>Check Out</button>
@@ -74,7 +80,6 @@ function Home() {
      
     </Slider>
 </div>
-
     </>
   )
 }
