@@ -1,25 +1,50 @@
-.link{
-    font-size: 20px;
-    font-weight: 700;
-    text-decoration: none;
-    // color: black;
-    margin: 0 10px;
-}
+header.navbar-container {
+    background-color: var(--lightYellow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 45px;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 99;
 
-.active{
-    color: green;
-    border-bottom: 2px solid green;
-}
+    .logo {
+        height: 35px;
+        width: auto;
+    }
 
-.navbar-container {
-    background-color: beige;
-    >p{
-         color: red;
-         b{
-            color: blue;
-            &:hover{
-                color: white;
+    .navLink_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 18px;
+
+        a {
+            text-decoration: none;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            padding: 0 5px;
+
+            &.active {
+                color: var(--green);
+                font-weight: 700;
+                border-bottom: 3px solid var(--green);
             }
-         }
+        }
+
+        .loginBtn {
+            padding: 8px 18px;
+            font-size: 18px;
+            background: linear-gradient(to top left, #FCDC2A, #0FA958);
+            color: var(--white);
+            font-weight: 700;
+            border-radius: 30px;
+        }
     }
 }
