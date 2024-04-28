@@ -1,11 +1,12 @@
-.main{
+.main {
     width: 100vw;
     height: 100vh;
     padding: 10px;
 }
-:root{
-    --red:rgb(244, 50, 11);
-    --black:black;
-    --green:#0FA958;
-    --white:whitesmoke;
+:root {
+    --red: rgb(244, 50, 11);
+    --black: black;
+    --green: #0fa958;
+    --white: whitesmoke;
+    --lightYellow: #f7fde6;
 }
