@@ -38,61 +38,55 @@ h1{
     width: 95vw;
     margin:10px auto;
     border-radius: 10px;
-
-     >.slick-slider{
-      margin: 0 10px;
-       >.slick-list{
-         
-        width: 90vw;
-        // height: auto;
-        // border: solid 1px rgb(245, 238, 238);
-        overflow: hidden;
-      }
-      >.slick-arrow{
-       
-        background: red;
-        margin-bottom: -10px;
-      }
-    } 
-}
-
-.slick-slide{
-  margin: 20px;
-  width: 300px;
-}
-
-.slick-prev, .slick-next{
-  right: 100%;
-}
-
-.shop{
-  box-sizing: border-box;
-  display: flex;
-  // border: solid 1px red;
-  border-radius: 5px;
-  background: #D9D9D9;
-  padding: 20px;
-  margin: 0px 10px;
   
-  >.img_container{
-        height: 250px;
-        width: 250px;
-        >img{
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-          border-radius: 3px;
-        }
+    } 
+
+    .swiper {
+      // border: solid 2px red;
+      height:100%;
+      margin: 10px 20px;
+      .swiper-button-prev , .swiper-button-next{
+        // border: solid 1px var(--ligth-gray-border);
         
-  }
-}
+        background:var(--background);
+        width: 50px;
+        margin-left: -10px;
+        &::after{
+            font-size:20px !important;
+        }
+      }
+      .swiper-button-prev{
+        border-left: none;
+        border-radius:0 10px 10px 0;
+      }
+      .swiper-button-next{
+        border-right: none;
+        margin-right: -10px;
+        border-radius: 10px 0 0 10px;
+      }
+      .swiper-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     
+        >.swiper-slide {
+          border: solid 1px var(--ligth-gray-border);
+          border-radius: 20px;
+          background: var(--white);
+          height: 350px;
+          width: 300px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin:0 20px;
+          >.shop_cart{
+            margin: 2px 10px;
+            height: 350px;
+            width: 300px;
+            border: solid 3px green;
+           }
+        }
+      }
+    }
+    
 
-.shop_info{
->h2 , >p{
-
-  display: -webkit-box;
-  -webkit-line-clamp: 1; /* Limit to 1 line of text */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-}

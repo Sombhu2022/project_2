@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 
-import './about.css'
+
 
 function About() {
+  
   return (
     <>
         <div className='about'>About</div>
-        <h1>hii</h1>
+        
     </>
-  )
+  ) 
+ 
 }
 
 export default About

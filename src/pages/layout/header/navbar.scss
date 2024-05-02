@@ -41,7 +41,7 @@ header.navbar-container {
         .loginBtn {
             padding: 8px 18px;
             font-size: 18px;
-            background: linear-gradient(to top left, #FCDC2A, #0FA958);
+            background:var(--linear_color);
             color: var(--white);
             font-weight: 700;
             border-radius: 30px;
