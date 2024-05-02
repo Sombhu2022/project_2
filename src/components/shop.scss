@@ -1,0 +1,46 @@
+  .shop{
+    box-sizing: border-box;
+    // display: flex;
+    height: 350px;
+    width: 300px;
+    border: solid 1px red;
+    border-radius: 5px;
+    background: #D9D9D9;
+    padding: 15px;
+   
+    
+    >.img_container{
+          height: 200px;
+          width: 250px;
+          >img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 3px;
+          }
+          
+    }
+
+    >a{
+        button{
+            
+            padding: 5px 15px;
+            font-size: 18px;
+            background:var(--linear_color);
+            color: var(--white);
+            font-weight: 700;
+            border-radius: 30px;
+            border: none;
+        }
+    }
+  }
+.shop_info{
+    >h2 , >p{
+    
+      display: -webkit-box;
+      -webkit-line-clamp: 1; /* Limit to 1 line of text */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    }
+

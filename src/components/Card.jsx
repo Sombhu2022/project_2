@@ -1,19 +1,27 @@
 import React from "react";
-import Image from "./Image";
+import img1 from '../media/images/img1.png'
+import { Link } from "react-router-dom";
 
-const Card = ({title, desc= "Default description", img}) => {
+const Card = ({ name , location , rating , img=""  }) => {
 
 
 	return (
-		<div>
-			<Image img={img} />
-			<div>
-				<h1>{title}</h1>
-				<p>
-                    {desc}
-				</p>
-			</div>
+		<>
+		<div className='img_container'>
+		   <img  src={img1}/>
 		</div>
+		<div className='shop_info'>
+
+	   <h2>{name}</h2>
+	   <p>{location}</p>
+	   <p>{rating}</p>
+		</div>
+
+	   <Link>
+	   <button>Check Out</button>
+	   </Link> 
+
+	  </>
 	);
 };
 

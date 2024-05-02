@@ -12,8 +12,9 @@ function ShopPage() {
    const hendleSubmit =(e)=>{
     e.preventDefault();
     const data ={ product , location}
-
+      
    }
+
   return (
     <div>
         <div className='search_container'>

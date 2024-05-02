@@ -6,6 +6,19 @@
     box-sizing: border-box;
     font-family: "Nunito Sans", sans-serif;
 }
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+}
 :root {
+    --linear_color: linear-gradient(to top left, #FCDC2A, #0FA958);
     --background: white;
+    --red: rgb(244, 50, 11);
+    --black: black;
+    --green: #0fa958;
+    --white: whitesmoke;
+    --lightYellow: #f7fde6;
+    --ligth-gray-border:rgba(219, 218, 218, 0.92);
 }

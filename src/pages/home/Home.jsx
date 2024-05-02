@@ -9,12 +9,25 @@ import Slider from "react-slick";
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {data} from './data.js'
 
-import img1 from './images/img1.png'
+import img1 from '../../media/images/img1.png'
 
-
-import { data } from './data';
 import { Link } from 'react-router-dom';
+import Card from '../../components/Card';
+import Shop from '../../components/Shop.jsx';
+
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y , Virtual } from 'swiper/modules';
+
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 function Home() {
   var settings = {
@@ -54,32 +67,52 @@ function Home() {
 
 <div className='shop_conainer'>
 
-    <Slider {...settings}  >
-     {
+<Swiper
+      modules={[Navigation, Pagination,Virtual]}
+      spaceBetween={50}
+      slidesPerView={4}
+      navigation
+      virtual
+      pagination={{type: 'fraction'}}
+      // onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log('slide change')}
+      centeredSlides={true}
+      breakpoints={{
+        300:{
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView:3,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 5,
+          spaceBetween: 50,
+        },
+      }}
+      // onSlideResetTransitionStart={}
+      
+    >
+       {
        data?.map((ele , index )=>{
         return(
-          <div className='shop' key={index}>
-            <div className='img_container'>
-               <img  src={img1}/>
-            </div>
-            <div className='shop_info'>
-
-           <h2>{ele.shop_name}</h2>
-           <p>{ele.location}</p>
-           <p>{ele.rating}</p>
-            </div>
-
-           <Link>
-           <button>Check Out</button>
-           </Link> 
-
+          <div className='shop_cart' key={index}>
+            <SwiperSlide ><Shop name={ele.shop_name} rating={ele.rating} location={ele.location} img={""} /></SwiperSlide>
           </div>
         )
        })
      }
-     
-    </Slider>
+      
+      
+    </Swiper>
+      
 </div>
+{/* <Shop name={"som"} location={"kolkata"} rating={0} /> */}
     </>
   )
 }
