@@ -13,6 +13,8 @@ import Register from "./pages/user/register/Register";
 import Login from "./pages/user/login/Login";
 
 import ShopPage from "./pages/shop/ShopPage";
+import AddShop from "./pages/addShop/AddShop";
+import AddProduct from "./pages/addProduct/AddProduct";
 
 const App = () => {
   return (
@@ -24,6 +26,9 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/product" element={<ShopPage />} />
+          <Route path="/addShop" element={<AddShop />} />
+          <Route path="/addProduct" element={<AddProduct />} />
+
         </Route>
 
         <Route path="*" element={<Error />} />
