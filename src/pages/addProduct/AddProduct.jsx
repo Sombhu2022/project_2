@@ -8,7 +8,7 @@ import productImage from "./product.svg";
 
 // import axios from 'axios'
 
-import { FaShop } from "react-icons/fa6";
+import { FaImage } from "react-icons/fa6";
 
 function AddProduct() {
   const [imagePreview, setImagesPreview] = useState([]);
@@ -63,7 +63,7 @@ function AddProduct() {
             </div>
             <div className="img-input">
               <p>
-                <FaShop />
+                <FaImage />
               </p>
               <b style={{ color: "#CB3CFF" }}>Click to upload image</b> svg, jpg
               , jpeg or gif file .
