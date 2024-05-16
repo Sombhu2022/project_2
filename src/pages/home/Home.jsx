@@ -30,15 +30,23 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 function Home() {
-  var settings = {
-  dots: false,
-  infinite: true,
-  arrows:true,
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  variableWidth:"100%"
-};
+
+  // const { user , isAuthenticate} = useSelector(state=> state.user)
+  
+
+
+//   var settings = {
+//   dots: false,
+//   infinite: true,
+//   arrows:true,
+//   speed: 500,
+//   slidesToShow: 4,
+//   slidesToScroll: 1,
+//   variableWidth:"100%"
+// };
+
+ 
+
   return (
     <> 
   <div className='slider'>

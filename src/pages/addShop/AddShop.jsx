@@ -9,6 +9,8 @@ import shopImage from "./shop.png";
 // import axios from 'axios'
 
 import { FaShop } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { createShop } from "../../redux/shop/shopController";
 
 function AddShop() {
   const [images, setImages] = useState();
@@ -17,7 +19,7 @@ function AddShop() {
   const [country , setCountry] = useState("");
   const [city , setCity] = useState("");
   
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const fileHandle = (e) => {
     const file = e.target.files[0];
@@ -35,14 +37,15 @@ function AddShop() {
     e.preventDefault();
     const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.append('image' , images)
+    myForm.set("shopName", name);
+    myForm.append('shopImage' , images)
     myForm.set("pin" , pin)
     myForm.set('city' , city)
     myForm.set("country" , country) 
 
-    console.log("this is my form", myForm);
-
+    // console.log("this is my form", myForm);
+    
+     dispatch(createShop({shopName:name}))
   };
 
   return (
@@ -104,7 +107,7 @@ function AddShop() {
         
 
           <button type="submit" onClick={handleSubmit}>
-            Add Product <IoCloudUploadSharp />
+            Add Shop <IoCloudUploadSharp />
           </button>
         </form>
       </div>
