@@ -15,8 +15,21 @@ import Login from "./pages/user/login/Login";
 import ShopPage from "./pages/shop/ShopPage";
 import AddShop from "./pages/addShop/AddShop";
 import AddProduct from "./pages/addProduct/AddProduct";
+import { useDispatch, useSelector } from "react-redux";
+import { authUser } from "./redux/user/userController";
+import { useEffect } from "react";
+
 
 const App = () => {
+ 
+  const { user , isAuthenticate} = useSelector(state=> state.user)
+  console.log(isAuthenticate,user);
+  const dispatch= useDispatch()
+  useEffect(()=>{
+    dispatch(authUser())
+    
+  },[])
+
   return (
     <Router>
 
@@ -43,3 +56,5 @@ const App = () => {
 };
 
 export default App;
+
+export const baseUrl = 'http://localhost:8080'
