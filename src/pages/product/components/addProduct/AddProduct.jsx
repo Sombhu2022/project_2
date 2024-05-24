@@ -9,10 +9,12 @@ import { useDispatch } from "react-redux";
 // import axios from 'axios'
 
 import { FaImage } from "react-icons/fa6";
-import { createProduct } from "../../redux/product/productController";
+import { createProduct } from "../../../../redux/product/productController";
 
-function AddProduct() {
-  const [imagePreview, setImagesPreview] = useState([]);
+
+
+function AddProduct({shopRef}) {
+  
   const [images, setImages] = useState();
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState(0);
@@ -47,9 +49,9 @@ function AddProduct() {
     myForm.set("stock", stock);
     myForm.set("discount", discount);
     myForm.set("totalPrice", actualPrice);
-    myForm.append("images", images);
+    myForm.set("shopRef" , shopRef)
+    myForm.append("productImage", images);
 
-    console.log("this is my form", myForm);
 
     dispatch(createProduct(myForm));
   };

@@ -1,16 +1,16 @@
 import React from "react";
-import img1 from '../media/images/img1.png'
+import img1 from '../componets/addShop/shop.png'
 import { Link } from "react-router-dom";
 
 import './shop.scss'
 
-const Shop = ({ name , location , rating , img=""  }) => {
+const Shop = ({ id , name , location , rating , img  }) => {
 
 
 	return (
 		<div className="shop">
 		<div className='img_container'>
-		   <img  src={img1}/>
+		   <img  src={img || img1}/>
 		</div>
 		<div className='shop_info'>
 
@@ -19,7 +19,7 @@ const Shop = ({ name , location , rating , img=""  }) => {
 	   <p>{rating}</p>
 		</div>
 
-	   <Link>
+	   <Link to={`/shop/${id}`}>
 	   <button>Check Out</button>
 	   </Link> 
 

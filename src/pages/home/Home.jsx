@@ -15,7 +15,7 @@ import img1 from '../../media/images/img1.png'
 
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
-import Shop from '../../components/Shop.jsx';
+import Shop from '../shop/componets/Shop.jsx';
 
 
 // Import Swiper React components
