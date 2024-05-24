@@ -12,12 +12,17 @@ import './app.css'
 import Register from "./pages/user/register/Register";
 import Login from "./pages/user/login/Login";
 
-import ShopPage from "./pages/shop/ShopPage";
-import AddShop from "./pages/addShop/AddShop";
-import AddProduct from "./pages/addProduct/AddProduct";
+import AddProduct from "./pages/product/components/addProduct/AddProduct";
+
 import { useDispatch, useSelector } from "react-redux";
 import { authUser } from "./redux/user/userController";
 import { useEffect } from "react";
+import { fetchAllShop } from "./redux/shop/shopController";
+import ProductPage from "./pages/product/ProductPage";
+
+import ShopPage from "./pages/shop/ShopPage";
+import AddShop from "./pages/shop/componets/addShop/AddShop";
+import ProductDetails from "./pages/product/components/ProductDetails";
 
 
 const App = () => {
@@ -27,7 +32,7 @@ const App = () => {
   const dispatch= useDispatch()
   useEffect(()=>{
     dispatch(authUser())
-    
+    dispatch(fetchAllShop())
   },[])
 
   return (
@@ -38,9 +43,10 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/product" element={<ShopPage />} />
-          <Route path="/addShop" element={<AddShop />} />
-          <Route path="/addProduct" element={<AddProduct />} />
+          <Route path="/product" element={<ProductPage />} />
+          <Route path="/shop/:id" element={<ShopPage/>} />
+          <Route path="/shop/add" element={<AddShop/>} />
+          <Route path="/shop/product/:productId" element={<ProductDetails />} />
 
         </Route>
 
@@ -52,7 +58,7 @@ const App = () => {
       </Routes>
       
     </Router>
-  );
+  )
 };
 
 export default App;
