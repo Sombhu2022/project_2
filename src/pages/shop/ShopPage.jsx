@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import "./shopPage.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectShop } from "../../redux/shop/shopController";
+import { deleteShop, selectShop } from "../../redux/shop/shopController";
 
 import { Rate } from "antd";
 import { FaLeaf } from "react-icons/fa";
@@ -12,6 +12,7 @@ import ProductPage from "../product/ProductPage";
 import AddProduct from "../product/components/addProduct/AddProduct";
 import AddReting from "./componets/AddReting";
 import ProductCard from "../product/components/ProductCard";
+import { resetDeleteStatus } from "../../redux/shop/shopSlice";
 
 function ShopPage() {
   const [shop, setShop] = useState({});
@@ -24,7 +25,8 @@ function ShopPage() {
   const { selectedShop, status } = useSelector((state) => state.shop);
   const product = useSelector((state) => state.product);
   const user = useSelector((state) => state.user);
-
+  
+  const navigate = useNavigate()
   // console.log("is Shop Owner ", isOwner);
 
   useEffect(() => {
@@ -36,6 +38,9 @@ function ShopPage() {
       // console.log('ok' , selectedShop);
       setShop(selectedShop);
     }
+    return ()=>{
+       dispatch(resetDeleteStatus())
+    }
   }, [status , product.status]);
 
   useEffect(() => {
@@ -46,6 +51,17 @@ function ShopPage() {
       }
     }
   }, [user?.status]);
+
+  const deleteShopHandler =(e)=>{
+      e.preventDefault()
+      dispatch(deleteShop(shop?._id))
+  }
+useEffect(()=>{
+   if(status.deleteShop === 'success'){
+    navigate('/product')
+   }
+
+},[status.deleteShop])
 
   console.log(shop);
 
@@ -73,6 +89,10 @@ function ShopPage() {
               {shop?.location?.city?.map((cityName, index) => {
                 return <span key={index}>{cityName} ,</span>;
               })}
+            </div>
+            <div className="buttons">
+              <button className="delete" onClick={deleteShopHandler}>delete</button>
+              <button className="edit" onClick={()=>navigate(`/shop/edit/${shop?._id}`)} >Edit</button>
             </div>
 
             <div className="product_list">

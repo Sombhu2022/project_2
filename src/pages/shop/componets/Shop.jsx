@@ -1,12 +1,13 @@
 import React from "react";
 import img1 from '../componets/addShop/shop.png'
 import { Link } from "react-router-dom";
+import { Rate } from "antd";
 
 import './shop.scss'
 
 const Shop = ({ id , name , location , rating , img  }) => {
 
-
+  console.log(location);
 	return (
 		<div className="shop">
 		<div className='img_container'>
@@ -15,12 +16,13 @@ const Shop = ({ id , name , location , rating , img  }) => {
 		<div className='shop_info'>
 
 	   <h2>{name}</h2>
-	   <p>{location}</p>
-	   <p>{rating}</p>
+	   <p>{location?location?.map(ele=><span>{ele}</span>):""}</p>
+       
+	   <Rate count={5} value={rating || 0} allowHalf disabled  /> <span style={{marginLeft:"5px"}}>{rating}</span>
 		</div>
 
 	   <Link to={`/shop/${id}`}>
-	   <button>Check Out</button>
+	   <button>Visit shop</button>
 	   </Link> 
 
 	  </div>

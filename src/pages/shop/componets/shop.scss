@@ -1,7 +1,7 @@
   .shop{
     box-sizing: border-box;
     // display: flex;
-    height: 350px;
+    height:auto;
     width: 300px;
     border: solid 1px red;
     border-radius: 5px;
@@ -35,8 +35,17 @@
     }
   }
 .shop_info{
-    >h2 , >p{
+  >h2 , >p{
     
+    >span{
+      // border: solid 1px var(--lightRed);
+      // color: red;
+      margin-right:10px ;
+      padding: 5px;
+      border-radius: 3px;
+      font-weight: 600;
+      // background: rgba(244, 181, 181, 0.685);
+    }
       display: -webkit-box;
       -webkit-line-clamp: 1; /* Limit to 1 line of text */
       -webkit-box-orient: vertical;

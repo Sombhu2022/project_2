@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoCloudUploadSharp } from "react-icons/io5";
-import "./addShop.scss";
+import shopImage from '../addShop/shop.png'
 
-import shopImage from "./shop.png";
 
 import { TiDeleteOutline } from "react-icons/ti";
 // import { useDispatch } from "react-redux";
@@ -11,27 +10,44 @@ import { TiDeleteOutline } from "react-icons/ti";
 
 import { FaShop } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
-import { createShop } from "../../../../redux/shop/shopController";
+import { selectShop, updateShopDetails, updateShopLogo } from "../../../../redux/shop/shopController";
+import { useParams } from "react-router-dom";
 
 import Loader from 'react-js-loader'
 
-
-function AddShop() {
+function EditShop() {
   const [images, setImages] = useState();
   const [name, setName] = useState("");
   const [pin , setPin] = useState(0);
   const [country , setCountry] = useState("");
-  // const [state , setState] = useState("");
   const [allCity, setAllCity] = useState(['']);
   const [city , setCity]=useState('')
   const [number , setNumber] = useState()
   const [numbers , setNumbers] = useState([''])
 
-  const  shop  = useSelector((state)=>state.shop)
- console.log(shop);
- const { status } = useSelector(state=> state.shop)
+  const  {selectedShop , status} = useSelector((state)=>state.shop)
+ const {shopId} = useParams()
   
   const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    if (shopId ) {
+      dispatch(selectShop(shopId));
+    }
+  }, [dispatch, shopId]);
+
+  useEffect(() => {
+    if (status.selectShop === "success" && selectedShop) {
+      setImages(selectedShop.shopImage?.url)
+      setName(selectedShop.shopName)
+      setAllCity(selectedShop.location?.city)
+      setCountry(selectedShop.location?.country)
+      setPin(selectedShop.location?.pin)
+      setNumbers(selectedShop?.customerCareNumber)
+    }
+  }, [ selectedShop ]);
+
 
   const fileHandle = (e) => {
     const file = e.target.files[0];
@@ -45,22 +61,25 @@ function AddShop() {
     reader.readAsDataURL(file);
   };
 
+
+  const handleImageSubmit =(e)=>{
+    e.preventDefault();
+    const myFrom = new FormData()
+    myFrom.append("shopImage" , images)
+    dispatch(updateShopLogo({shopId , shopImage:myFrom}))
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const myForm = new FormData();
 
     myForm.set("shopName", name);
-    myForm.append('shopImage' , images)
     myForm.set("pin" , pin)
-    // myForm.set('state' , state)
     allCity.forEach((ele)=> { if(ele) myForm.append('city' , ele) })
     numbers.forEach((ele)=> { if(ele) myForm.append('customerCareNumber' , ele) })
     myForm.set("country" , country) 
     
-
-    // console.log("this is my form", myForm);
-    
-     dispatch(createShop(myForm))
+     dispatch(updateShopDetails({shopId , myForm}))
   };
 
   const  addallCity=(e) => {
@@ -93,10 +112,17 @@ function AddShop() {
   return (
     <div className="add_shop_container">
       <div className="form_container">
+        <h3> Update Shop image </h3>
+
         <form action="" className="form">
+
           <label className="primary_input label" htmlFor="file">
             <div className="img-container">
-              <img src={images?images:shopImage} alt="important document" />
+            {status.updateShopLogo === "pending" ? (
+                <Loader type={"spinner-circle"} bgColor={'green'}  color={"green"} size={80} />
+              ) : (
+                <img src={images ? images : ""} alt="important document" />
+              )}
             </div>
             <div className="img-input">
               <p>
@@ -115,20 +141,33 @@ function AddShop() {
             accept="image/*"
             onChange={fileHandle}
           />
+
+          <button type="submit" onClick={handleImageSubmit}>
+            Update Image  
+            {status.updateShopLogo === "pending" ? (
+                <Loader type={"spinner-circle"} bgColor={'white'}  color={"green"} size={40} />
+              ) : (
+                <IoCloudUploadSharp />
+              )}
+          </button>  
+						
+
+        </form>
+
+       <h3>
+        Update Shop Details
+       </h3>
+
+        <form action="" className="form">
           <input
             type="text"
             name="name"
             id=""
+            value={name}
             placeholder="Shop Name"
             onChange={(e) => setName(e.target.value)}
           />
-          {/* <input
-            type="text"
-            name="state"
-            id=""
-            placeholder="State Name"
-            onChange={(e) => setState(e.target.value)}
-          /> */}
+         
           {
              allCity?.map((ele, index)=>{
               if(!ele) return
@@ -193,6 +232,7 @@ function AddShop() {
             type="number"
             name="pin"
             id=""
+            value={pin}
             placeholder="Pin Code"
             onChange={(e) => setPin(e.target.value)}
           />
@@ -200,6 +240,7 @@ function AddShop() {
             type="text"
             name="country"
             id=""
+            value={country}
             placeholder="Country Name"
             onChange={(e) => setCountry(e.target.value)}
           />
@@ -207,8 +248,8 @@ function AddShop() {
         
 
           <button type="submit" onClick={handleSubmit}>
-            Add Shop 
-            {status.addShop === "pending" ? (
+            Update Shop  
+             {status.updateShopDetails === "pending" ? (
                 <Loader type={"spinner-circle"} bgColor={'white'}  color={"green"} size={40} />
               ) : (
                 <IoCloudUploadSharp />
@@ -220,4 +261,4 @@ function AddShop() {
   );
 }
 
-export default AddShop;
+export default EditShop;

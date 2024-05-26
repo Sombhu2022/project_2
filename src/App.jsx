@@ -23,6 +23,8 @@ import ProductPage from "./pages/product/ProductPage";
 import ShopPage from "./pages/shop/ShopPage";
 import AddShop from "./pages/shop/componets/addShop/AddShop";
 import ProductDetails from "./pages/product/components/ProductDetails";
+import EditProduct from "./pages/product/components/editProduct/EditProduct";
+import EditShop from "./pages/shop/componets/editShop/EditShop";
 
 
 const App = () => {
@@ -46,7 +48,9 @@ const App = () => {
           <Route path="/product" element={<ProductPage />} />
           <Route path="/shop/:id" element={<ShopPage/>} />
           <Route path="/shop/add" element={<AddShop/>} />
+          <Route path="/shop/edit/:shopId" element={<EditShop/>} />
           <Route path="/shop/product/:productId" element={<ProductDetails />} />
+          <Route path="/shop/product/edit/:productId" element={<EditProduct />} />
 
         </Route>
 
