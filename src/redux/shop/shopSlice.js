@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { createShop, fetchAllShop, postShopReview, selectShop } from "./shopController"
+import { createShop, deleteShop, fetchAllShop, postShopReview, selectShop, updateShopDetails, updateShopLogo } from "./shopController"
+
 
 
 const initialState = {
@@ -9,7 +10,10 @@ const initialState = {
         addShop:'',
         selectShop:'',
         fetchShop:'',
-        shopReview:''
+        shopReview:'',
+        deleteShop:"",
+        updateShopDetails:"",
+        updateShopLogo:""
     },
     message:"",
     error:null
@@ -19,6 +23,9 @@ export const shopSlice = createSlice({
     name:"shop",
     initialState,
     reducers:{
+        resetDeleteStatus(state , action){
+           state.status.deleteShop = ""
+        }
 
     },
     extraReducers:(builder)=>{
@@ -78,8 +85,56 @@ export const shopSlice = createSlice({
             state.message = 'Shop not selected'
             state.status.shopReview = 'rejected'
         })
+
+
+        builder.addCase(deleteShop.pending , (state , action)=>{
+            state.status.deleteShop = 'pending'
+        })
+        builder.addCase(deleteShop.fulfilled , (state , action)=>{
+            state.selectedShop = {}
+            state.shop = state.shop.filter(ele => ele._id !== action.payload.shop._id)
+            state.message = 'Shop select successfull'
+            state.status.deleteShop = 'success'
+        })
+        builder.addCase(deleteShop.rejected , (state ,action)=>{
+            state.error = action.payload.error
+            state.message = 'Shop not selected'
+            state.status.deleteShop = 'rejected'
+        })
+
+
+        builder.addCase(updateShopDetails.pending , (state , action)=>{
+            state.status.updateShopDetails = 'pending'
+        })
+        builder.addCase(updateShopDetails.fulfilled , (state , action)=>{
+            state.selectedShop = action.payload.shop
+            state.message = 'Shop select successfull'
+            state.status.updateShopDetails = 'success'
+        })
+        builder.addCase(updateShopDetails.rejected , (state ,action)=>{
+            state.error = action.payload.error
+            state.message = 'Shop not selected'
+            state.status.updateShopDetails = 'rejected'
+        })
+
+
+        builder.addCase(updateShopLogo.pending , (state , action)=>{
+            state.status.updateShopLogo = 'pending'
+        })
+        builder.addCase(updateShopLogo.fulfilled , (state , action)=>{
+            state.selectedShop = action.payload.shop
+            state.message = 'Shop select successfull'
+            state.status.updateShopLogo = 'success'
+        })
+        builder.addCase(updateShopLogo.rejected , (state ,action)=>{
+            state.error = action.payload.error
+            state.message = 'Shop not selected'
+            state.status.updateShopLogo = 'rejected'
+        })
     }
 })
 
 
 export default shopSlice.reducer
+
+export const { resetDeleteStatus } =shopSlice.actions

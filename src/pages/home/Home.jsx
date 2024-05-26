@@ -9,7 +9,7 @@ import Slider from "react-slick";
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {data} from './data.js'
+
 
 import img1 from '../../media/images/img1.png'
 
@@ -28,11 +28,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { useSelector } from 'react-redux';
 
 function Home() {
 
   // const { user , isAuthenticate} = useSelector(state=> state.user)
-  
+  const { shop , status} = useSelector(state=>state.shop)
 
 
 //   var settings = {
@@ -107,10 +108,10 @@ function Home() {
       
     >
        {
-       data?.map((ele , index )=>{
+       shop?.map((ele , index )=>{
         return(
-          <div className='shop_cart' key={index}>
-            <SwiperSlide ><Shop name={ele.shop_name} rating={ele.rating} location={ele.location} img={""} /></SwiperSlide>
+          <div className='shop_cart' key={ele._id}>
+            <SwiperSlide ><Shop name={ele.shopName} rating={ele.ratings} location={ele.location.city} img={ele.shopImage?.url} /></SwiperSlide>
           </div>
         )
        })

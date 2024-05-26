@@ -43,7 +43,7 @@ function ProductPage() {
            {
             shop?.map((ele)=>{
               return(  <div className='shop_cart' key={ele._id}>
-              <Shop name={ele.shopName} id={ele._id} rating={''} location={ele.location.pin} img={ele.shopImage?.url} />
+              <Shop name={ele.shopName} id={ele._id} rating={ele.ratings} location={ele.location.city} img={ele.shopImage?.url} />
             </div>
           )}
         )

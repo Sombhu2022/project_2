@@ -18,7 +18,7 @@ export const userSlice = createSlice({
     name:"user",
     initialState,
     reducers:{
-        resateStatus(state , action ){
+        resetStatus(state , action ){
             state.status = "ideal"
             state.error = null
         }

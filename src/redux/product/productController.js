@@ -35,10 +35,10 @@ export const fetchProductByProductId = createAsyncThunk('product/fetchProductByP
     }
 })
 
-export const deleteProduct = createAsyncThunk('product/fetchProductByProductId' , async(productId)=>{
+export const deleteProduct = createAsyncThunk('product/deleteProduct' , async(productId)=>{
     console.log("pro id",productId);
     try {
-        const {data} = await API.get(`${baseUrl}/api/product/${productId}` , {
+        const {data} = await API.delete(`${baseUrl}/api/product/delete/${productId}` , {
             headers: { "Content-Type": "multipart/form-data", },
             withCredentials: true
         })
@@ -50,10 +50,41 @@ export const deleteProduct = createAsyncThunk('product/fetchProductByProductId' 
     }
 })
 
-export const editProduct = createAsyncThunk('product/fetchProductByProductId' , async(productId)=>{
+export const updateProductDetails = createAsyncThunk('product/updateProductDetails' , async({
+    productName,
+    productId,
+    price,
+    discount,
+    description,
+    stock,
+    totalPrice
+  })=>{
+    console.log("pro id",productId );
+    try {
+        const {data} = await API.patch(`${baseUrl}/api/product/update-details/${productId}` , {
+            productName,
+            price,
+            discount,
+            description,
+            stock,
+            totalPrice
+          }, {
+            headers: { "Content-Type": "multipart/form-data", },
+            withCredentials: true
+        })
+    
+        return data
+        
+    } catch (error) {
+       console.log(error); 
+    }
+})
+
+
+export const updateProductImage = createAsyncThunk('product/updateProductImage' , async({productId , productImage})=>{
     console.log("pro id",productId);
     try {
-        const {data} = await API.get(`${baseUrl}/api/product/${productId}` , {
+        const {data} = await API.patch(`${baseUrl}/api/product/update-picture/${productId}` ,{productImage}, {
             headers: { "Content-Type": "multipart/form-data", },
             withCredentials: true
         })

@@ -1,0 +1,16 @@
+.form_container{
+    flex-direction: column !important;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >.sl-spinner2{
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
