@@ -112,7 +112,6 @@ export const updateShopDetails = createAsyncThunk('shop/updateShopDetails' , asy
 
 
 export const updateShopLogo = createAsyncThunk('shop/updateShopLogo' , async({ shopId , shopImage} )=>{
-     
     console.log(" ok data are here",shopId );
     try {
         const {data } = await API.patch(`${baseUrl}/api/shop/logo/${shopId}` , shopImage,
@@ -127,3 +126,38 @@ export const updateShopLogo = createAsyncThunk('shop/updateShopLogo' , async({ s
         console.log(error);
     }
 })
+
+
+export const fetchShopByShopName = createAsyncThunk('shop/fetchShopByShopName' , async( shopName  )=>{
+    console.log("shop name" , shopName);
+    try {
+        const { data } = await API.get(`${baseUrl}/api/shop/search/${shopName}` ,
+            {
+                headers:{ 'Content-Type':'multipart/form-data'},
+                withCredentials:true
+            }
+        )
+        return data
+
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+     
+export const fetchShopByProductNameOrCity = createAsyncThunk('shop/fetchShopByProductNameOrCity' , async( {productName='' , city=''}  )=>{
+    console.log("shop name" , productName , city);
+    try {
+        const { data } = await API.post(`${baseUrl}/api/shop/search` ,{productName , city} ,
+            {
+                headers:{ 'Content-Type':'multipart/form-data'},
+                withCredentials:true
+            }
+        )
+        return data
+
+    } catch (error) {
+        console.log(error);
+    }
+})
+     

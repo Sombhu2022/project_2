@@ -1,0 +1,19 @@
+// Dashboard.scss
+.dashboard_container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .shop_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+}

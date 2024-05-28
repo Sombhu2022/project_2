@@ -12,9 +12,11 @@ function ProductDetails() {
     const dispatch = useDispatch();
     const [product , setProduct] = useState()
     const [shopId , setShopId] = useState()
+    const [isOwner , setIsOwner] = useState(false)
     const navigate = useNavigate()
      
     const { selectProduct , status } = useSelector(state=>state.product)
+    const user = useSelector(state => state.user)
     useEffect(()=>{
         dispatch(fetchProductByProductId(productId))
     },[])
@@ -34,6 +36,16 @@ function ProductDetails() {
     } 
   } , [status.deleteProduct])
 
+  useEffect(() => {
+    // console.log(user);
+    console.log(user?.user?._id , product?.shopRef?.owner);
+ 
+      if ( user?.isRoleShopOwner && user?.user?._id === product?.shopRef?.owner ) {
+        setIsOwner(true);
+      }
+    
+  }, [user?.status , status]);
+
 
  const deleteProductHandler=(e)=>{
    e.preventDefault();
@@ -48,7 +60,7 @@ function ProductDetails() {
 
   return (
     <>
-      <div className="product_container">
+      <div className="product_container main">
         <div className="img_container">
           <img src={product?.productImage?.url} alt="" />
         </div>
@@ -56,9 +68,25 @@ function ProductDetails() {
           <h2>{product?.productName}</h2>
           <p>{product?._id}</p>
           <p>{product?.totalPrice} <del> {product?.price} </del> <sup> {product?.discount}%</sup> </p>
+          <p>discount : {product?.discount}%</p>
           <p>Stock : {product?.stock}</p>
-          <button className='delete_product' onClick={deleteProductHandler}> delete</button>
-          <button className='edit_product' onClick={editProductHandler}> Edit </button>
+          <p>{product?.description}</p>
+          {
+            user?.isRoleShopOwner && user?.user?._id === product?.shopRef?.owner ?(<div className='product_buttons'><button className='delete_product' onClick={deleteProductHandler}> delete</button>
+            <button className='edit_product' onClick={editProductHandler}> Edit </button></div>):""
+          }
+          
+        </div>
+
+        <div className='shop_info2'>
+          <h4> Shop Info</h4>
+          <img src={product?.shopRef?.shopImage?.url} alt="" />
+          <p>{product?.shopRef?.shopName}</p>
+         {
+          product?.shopRef?.customerCareNumber?.map((ele , index)=>{
+            return(<a href={`tel:${ele}`} key={index}>{ele}</a>)
+          })
+         }
         </div>
       </div>
     

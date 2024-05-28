@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { createShop, deleteShop, fetchAllShop, postShopReview, selectShop, updateShopDetails, updateShopLogo } from "./shopController"
+import { createShop, deleteShop, fetchAllShop, fetchShopByProductNameOrCity, fetchShopByShopName, postShopReview, selectShop, updateShopDetails, updateShopLogo } from "./shopController"
 
 
 
@@ -13,7 +13,8 @@ const initialState = {
         shopReview:'',
         deleteShop:"",
         updateShopDetails:"",
-        updateShopLogo:""
+        updateShopLogo:"",
+        fetchShopByShopName:""
     },
     message:"",
     error:null
@@ -130,6 +131,36 @@ export const shopSlice = createSlice({
             state.error = action.payload.error
             state.message = 'Shop not selected'
             state.status.updateShopLogo = 'rejected'
+        })
+
+
+        builder.addCase(fetchShopByShopName.pending , (state , action)=>{
+            state.status.fetchShopByShopName = 'pending'
+        })
+        builder.addCase(fetchShopByShopName.fulfilled , (state , action)=>{
+            state.shop = action.payload.shop
+            state.message = 'Shop fetch successfull'
+            state.status.fetchShopByShopName = 'success'
+        })
+        builder.addCase(fetchShopByShopName.rejected , (state ,action)=>{
+            state.error = action.payload.error
+            state.message = 'Shop not selected'
+            state.status.fetchShopByShopName = 'rejected'
+        })
+
+        
+        builder.addCase(fetchShopByProductNameOrCity.pending , (state , action)=>{
+            state.status.fetchShopByShopName = 'pending'
+        })
+        builder.addCase(fetchShopByProductNameOrCity.fulfilled , (state , action)=>{
+            state.shop = action.payload.shop
+            state.message = 'Shop fetch successfull'
+            state.status.fetchShopByShopName = 'success'
+        })
+        builder.addCase(fetchShopByProductNameOrCity.rejected , (state ,action)=>{
+            state.error = action.payload.error
+            state.message = 'Shop not selected'
+            state.status.fetchShopByShopName = 'rejected'
         })
     }
 })

@@ -1,0 +1,71 @@
+.login-container {
+    // width: 100vw;
+    // height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 100px auto;
+  
+    .login-header {
+      text-align: center;
+  
+      h1 {
+        font-size: 2em;
+        color: #333;
+      }
+  
+      .logo {
+        width: 100px;
+        margin: 10px 0;
+      }
+  
+      p {
+        font-size: 1.2em;
+        color: #777;
+      }
+    }
+  
+    .login-content {
+      width: 100%;
+      text-align: center;
+  
+      h3 {
+        font-size: 1.5em;
+        color: #333;
+        margin-bottom: 20px;
+      }
+  
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+  
+        input {
+          margin-right: 10px;
+        }
+      }
+  
+      .google-login-button {
+        display: inline-block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+  
+        &:hover {
+          background-color: #357ae8;
+        }
+      }
+    }
+  }
+  
