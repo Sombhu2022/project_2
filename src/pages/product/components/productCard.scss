@@ -33,11 +33,11 @@ a{
     object-fit: cover;
   }
   
-  h3{
+  .product_other_info h3{
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     display: -webkit-box;
-    -webkit-line-clamp: 1; /* Limit to 1 line of text */
+    -webkit-line-clamp: 1 !important; /* Limit to 1 line of text */
     -webkit-box-orient: vertical;
     overflow: hidden;
     

@@ -14,7 +14,7 @@ function AddReting({shopId}) {
         dispatch(postShopReview({shopId , rating , message}))
     }
   return (
-    <div className="review">
+    <div className="review " style={{  margin:"10px auto" , padding: "10px"}}>
     <h3> Review Section </h3>
 
     <form action="" className="form">

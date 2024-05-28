@@ -4,14 +4,14 @@ import { IoCloudUploadSharp } from "react-icons/io5";
 
 import productImage from "./product.svg";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // import axios from 'axios'
 
 import { FaImage } from "react-icons/fa6";
 import { createProduct } from "../../../../redux/product/productController";
 
-
+import Loader from 'react-js-loader'
 
 function AddProduct({shopRef}) {
   
@@ -23,7 +23,7 @@ function AddProduct({shopRef}) {
   const [discount, setDiscount] = useState(0);
 
   const dispatch = useDispatch()
-
+ const { status } = useSelector(state=> state.product)
   const fileHandle = (e) => {
     const file = e.target.files[0];
 
@@ -35,6 +35,7 @@ function AddProduct({shopRef}) {
     };
     reader.readAsDataURL(file);
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -119,7 +120,12 @@ function AddProduct({shopRef}) {
           />
 
           <button type="submit" onClick={handleSubmit}>
-            Add Product <IoCloudUploadSharp />
+            Add Product
+            {status?.createProduct === "pending" ? (
+                <Loader type={"spinner-circle"} bgColor={'white'}  color={"green"} size={40} />
+              ) : (
+                <IoCloudUploadSharp />
+              )}
           </button>
         </form>
       </div>

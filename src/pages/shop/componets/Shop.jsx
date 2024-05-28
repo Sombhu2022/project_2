@@ -16,7 +16,7 @@ const Shop = ({ id , name , location , rating , img  }) => {
 		<div className='shop_info'>
 
 	   <h2>{name}</h2>
-	   <p>{location?location?.map(ele=><span>{ele}</span>):""}</p>
+	   <p>{location?location?.map((ele,index)=><span key={index}>{ele}</span>):""}</p>
        
 	   <Rate count={5} value={rating || 0} allowHalf disabled  /> <span style={{marginLeft:"5px"}}>{rating}</span>
 		</div>

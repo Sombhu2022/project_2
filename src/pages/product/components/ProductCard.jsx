@@ -11,7 +11,6 @@ function ProductCard({id,image , productName , price , discount , stock}) {
         </div >
         <div className="product_other_info">
             <h3> {productName} </h3>
-           
         </div>
 
     </div>

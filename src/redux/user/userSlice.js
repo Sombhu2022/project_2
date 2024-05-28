@@ -4,7 +4,7 @@ import { authUser, logInUser, logoutUser } from "./userController";
 const initialState = {
     user:{},
     isAuthenticate:false,
-    isShopOwner:false,
+    isRoleShopOwner:false,
     status:{
         loginUser:"",
         logOutUser:"",
@@ -62,7 +62,7 @@ export const userSlice = createSlice({
             state.isAuthenticate = true;
             state.user = action.payload.user
             if(action.payload?.user?.role === 'shopOwner'){
-                 state.isShopOwner = true
+                 state.isRoleShopOwner = true
                 }
 
             localStorage.setItem("token" , action.payload.token)
@@ -73,7 +73,7 @@ export const userSlice = createSlice({
             state.error=action.error.message
             state.status.loginUser="rejected"
             state.isAuthenticate=false
-            state.isShopOwner = false
+            state.isRoleShopOwner = false
             state.message = action.error.message
         })
 
@@ -84,7 +84,7 @@ export const userSlice = createSlice({
             state.error =null
             state.isAuthenticate=false
 
-            state.isShopOwner = false
+            state.isRoleShopOwner = false
             
             state.user = {}
             state.message = null
@@ -96,7 +96,7 @@ export const userSlice = createSlice({
             state.message = action.payload.message 
             state.isAuthenticate = true;
             state.user = action.payload.user
-            if(action.payload?.user?.role === 'shopOwner'){ console.log("ok"); state.isShopOwner = true}
+            if(action.payload?.user?.role === 'shopOwner'){ console.log("ok"); state.isRoleShopOwner = true}
             // localStorage.setItem("token" , action.payload.token)
         } )
 
@@ -105,7 +105,7 @@ export const userSlice = createSlice({
             state.error=action.error.message
             state.status.authUser="rejected"
             state.isAuthenticate=false
-            state.isShopOwner = false
+            state.isRoleShopOwner = false
 
             state.message = action.error.message
         })
@@ -115,7 +115,7 @@ export const userSlice = createSlice({
             state.status.logOutUser="pending"
             state.error =null
             state.isAuthenticate=false
-            state.isShopOwner = false
+            state.isRoleShopOwner = false
             state.user = {}
             state.message = null
         })
@@ -125,7 +125,7 @@ export const userSlice = createSlice({
             state.status.logOutUser ="logoutSuccess";
             state.message = action.payload.message 
             state.isAuthenticate = false;
-            state.isShopOwner = false  
+            state.isRoleShopOwner = false  
             state.user = {}
             localStorage.setItem("token" , null)
         } )
@@ -135,7 +135,7 @@ export const userSlice = createSlice({
             state.error=action.error.message
             state.status.logOutUser="rejected"
             state.isAuthenticate=false
-            state.isShopOwner = false
+            state.isRoleShopOwner = false
             state.message = action.error.message
         })
 

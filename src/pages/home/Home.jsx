@@ -34,19 +34,9 @@ function Home() {
 
   // const { user , isAuthenticate} = useSelector(state=> state.user)
   const { shop , status} = useSelector(state=>state.shop)
+const { user } = useSelector(state => state.user)
 
-
-//   var settings = {
-//   dots: false,
-//   infinite: true,
-//   arrows:true,
-//   speed: 500,
-//   slidesToShow: 4,
-//   slidesToScroll: 1,
-//   variableWidth:"100%"
-// };
-
- 
+ console.log(user);
 
   return (
     <> 
@@ -72,7 +62,18 @@ function Home() {
   
    </Carousel>
     </div>
+<div className='info'>
+     <h3>Find Your Need Locally </h3>
 
+     <Link to={'/product'}>
+        Find Shop
+     </Link>
+    {
+      user && user?.role === 'admin' ?(<Link to={'dashboard'}>
+      Dashboard
+      </Link>):""
+    } 
+</div>
 
 <div className='shop_conainer'>
 
@@ -111,7 +112,7 @@ function Home() {
        shop?.map((ele , index )=>{
         return(
           <div className='shop_cart' key={ele._id}>
-            <SwiperSlide ><Shop name={ele.shopName} rating={ele.ratings} location={ele.location.city} img={ele.shopImage?.url} /></SwiperSlide>
+            <SwiperSlide ><Shop name={ele.shopName} rating={ele.ratings} location={ele.location.city} img={ele.shopImage?.url} id={ele._id} /></SwiperSlide>
           </div>
         )
        })
