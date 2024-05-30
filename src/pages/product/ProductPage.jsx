@@ -1,17 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './productPage.scss'
 import { FaSearchDollar } from "react-icons/fa";
 import { FaSearchLocation } from "react-icons/fa";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Shop from '../shop/componets/Shop';
 import SearchShop from './components/searchShop/SearchShop';
+import { fetchAllShop } from '../../redux/shop/shopController';
 
 function ProductPage() {
    const [product , setProduct]= useState("")  // state variable 
    const [location , setLocation] = useState("")
    const { shop } = useSelector(state=>state.shop)
 
+   const dispatch = useDispatch()
+   
+   useEffect(()=>{
+    dispatch(fetchAllShop())
+   },[])
 
    const hendleSubmit =(e)=>{
     e.preventDefault();
