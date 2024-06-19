@@ -70,6 +70,6 @@ const App = () => {
 
 export default App;
 
-// export const baseUrl = 'http://localhost:8080'
+export const baseUrl = 'http://localhost:8080'
 
-export const baseUrl = 'https://local-bazar-server-pied.vercel.app'
+// export const baseUrl = 'https://local-bazar-server-pied.vercel.app'
