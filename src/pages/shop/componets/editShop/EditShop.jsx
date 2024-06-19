@@ -213,7 +213,7 @@ function EditShop() {
 										name='Customer Care Number'
 										required
 										onChange={(e) =>  setNumber(e.target.value)}
-										placeholder='City Name'
+										placeholder='Customer Care Number'
                     max={10}
 										// className='h-9 rounded-md border-purple-300 border px-2 outline-none focus:outline-none mb-2 w-[70%]'
 									/>

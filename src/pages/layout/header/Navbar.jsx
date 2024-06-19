@@ -38,7 +38,7 @@ const Navbar = () => {
           <MdInfo /> About
         </NavLink>
         <NavLink className="link" to="/product" onClick={toggleMenu}>
-          <IoBagHandle /> Product
+          <IoBagHandle /> Shop
         </NavLink>
         {
           isRoleShopOwner?(<NavLink className="link" to="/shop/add" onClick={toggleMenu}>
