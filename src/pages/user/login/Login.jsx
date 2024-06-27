@@ -8,31 +8,47 @@ import { logInUser } from '../../../redux/user/userController';
 import logo from '../../../media/logo.png';
 import './login.scss';
 import { useNavigate } from 'react-router-dom';
+import { resetUserStatus } from '../../../redux/user/userSlice';
 
 function Login() {
-  const [profilePic, setProfilePic] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [profilePic, setProfilePic] = useState();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
   const [role, setRole] = useState('user');
   const dispatch = useDispatch();
   const { user , status }=useSelector(state => state.user)
   const navigate = useNavigate()
 
+useEffect(()=>{
+
+  if (name && email && profilePic) {
+    console.log(name, email, profilePic);
+    dispatch(logInUser({name , email , profilePic , role}));
+  }
+},[name , email , profilePic , role])
+
+ 
+
+
   const loginHandle = (encodeData) => {
-    const data = jwtDecode(encodeData.credential);
-    if (data) {
-      setName(data.name);
-      setEmail(data.email);
-      setProfilePic(data.picture);
-    }
-    dispatch(logInUser({ name, email, profilePic, role }));
+    let data = jwtDecode(encodeData.credential);
+    console.log("log credential" ,data);
+
+    setProfilePic(data.picture);
+    setEmail(data.email);
+    setName(data.name);
   };
 
 
   useEffect(()=>{
      if(status?.loginUser === 'success'){
       navigate('/')
+      console.log("ok run");
+      // resetUserStatus();
      }
+     return(()=>{
+      dispatch(resetUserStatus());}
+     )
   },[ status])
 
   return (
