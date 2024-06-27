@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authUser, logInUser, logoutUser } from "./userController";
+import shopSlice from "../shop/shopSlice";
 
 const initialState = {
     user:{},
@@ -18,9 +19,8 @@ export const userSlice = createSlice({
     name:"user",
     initialState,
     reducers:{
-        resetStatus(state , action ){
-            state.status = "ideal"
-            state.error = null
+        resetUserStatus(state , action ){
+            state.status.loginUser = ""
         }
 
     },
@@ -145,3 +145,5 @@ export const userSlice = createSlice({
 
 
 export default userSlice.reducer
+
+export const { resetUserStatus } = userSlice.actions

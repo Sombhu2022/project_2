@@ -34,7 +34,7 @@ function Home() {
 
   // const { user , isAuthenticate} = useSelector(state=> state.user)
   const { shop , status} = useSelector(state=>state.shop)
-const { user } = useSelector(state => state.user)
+  const { user } = useSelector(state => state.user)
 
  console.log(user);
 
@@ -45,19 +45,19 @@ const { user } = useSelector(state => state.user)
    <Carousel infiniteLoop autoPlay axis='vertical' verticalSwipe="natural" showArrows={false} showThumbs={false} showStatus={false} interval={2500}>
     <div>
       
-      <img src={img1} alt="" />
+      <img src={img1} alt="img 1" />
     </div>
     <div>
-      <img src={img1} alt="" />
+      <img src={img1} alt="img 2 " />
     </div>
     <div>
-      <img src={img1} alt="" />
+      <img src={img1} alt="img 3" />
     </div>
     <div>
-      <img src={img1} alt="" />
+      <img src={img1} alt="img 4" />
     </div>
     <div>
-      <img src={img1} alt="" />
+      <img src={img1} alt="img 5" />
     </div>
   
    </Carousel>
@@ -108,16 +108,16 @@ const { user } = useSelector(state => state.user)
       // onSlideResetTransitionStart={}
       
     >
-       {
-       shop?.map((ele , index )=>{
+     {
+        shop?.map((ele , index )=>{
         return(
           <div className='shop_cart' key={ele._id}>
-            <SwiperSlide ><Shop name={ele.shopName} rating={ele.ratings} location={ele.location.city} img={ele.shopImage?.url} id={ele._id} /></SwiperSlide>
+            <SwiperSlide ><Shop name={ele.shopName} rating={ele.ratings} location={ele.location?.city} img={ele.shopImage?.url} id={ele._id} /></SwiperSlide>
           </div>
         )
        })
      }
-      
+  
       
     </Swiper>
       
